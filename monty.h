@@ -34,4 +34,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int count(char *lineptr, char *delim);
+char **vectorize(char *lineptr, char *delim);
 #endif
