@@ -2,4 +2,5 @@
 function created, array to be updated as instructions are created
 
 # Start writing the instructions
+completed mandatary tasks
 
