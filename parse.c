@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <string.h>
 
 /**
  * count - counts the number of words in a string

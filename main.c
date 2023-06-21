@@ -25,10 +25,13 @@ int main(int argc, char **argv)
 		app.args = vectorize(app.line, delim);
 		if (app.args)
 		{
-			f = select_inst(app.args[0]);
-			if (!f)
-				instructions_err(app.l_num, app.args[0]);
-			f(&(app.top), app.l_num);
+			if (app.args[0][0] != '#') /*comments handling*/
+			{
+				f = select_inst(app.args[0]);
+				if (!f)
+					instructions_err(app.l_num, app.args[0]);
+				f(&(app.top), app.l_num);
+			}
 			free(app.args);
 			app.args = NULL;
 		}
