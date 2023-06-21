@@ -80,3 +80,25 @@ void pint(stack_t **stack, unsigned int linenumber)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * pop - remove the element at the top of a stack
+ * @stack: The stack we desire to remove element from
+ * @linenumber: The bytecode line number being executed
+ */
+void pop(stack_t **stack, unsigned int linenumber)
+{
+	stack_t *popped;
+
+	(void) linenumber;
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", app.l_num);
+		exit(EXIT_FAILURE);
+	}
+	if (app.mode == 1)
+		popped = delete_dnode_at_head(stack);
+	else
+		popped = delete_dnode_at_bottom(stack);
+	free(popped);
+}

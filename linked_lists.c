@@ -65,32 +65,32 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
  * @head: pointer to head node
  * Return: 1 if success, -1 if failed
 */
-int delete_dnode_at_head(stack_t **head)
+stack_t *delete_dnode_at_head(stack_t **head)
 {
 	stack_t *h, *next;
 
 	h = *head;
 	next = h->next;
-	free(h);
 	if (next)
 		next->prev = NULL;
 	*head = next;
-	return (1);
+	app.top = *head;
+	return (h);
 }
 /**
  * delete_dnode_at_bottom - deletes the node at bottom
  * @bottom: pointer to head node
  * Return: 1 if success, -1 if failed
 */
-int delete_dnode_at_bottom(stack_t **bottom)
+stack_t *delete_dnode_at_bottom(stack_t **bottom)
 {
 	stack_t *b, *prev;
 
 	b = *bottom;
 	prev = b->prev;
-	free(b);
 	if (prev)
 		prev->next = NULL;
 	*bottom = prev;
-	return (1);
+	app.bottom = *bottom;
+	return (b);
 }

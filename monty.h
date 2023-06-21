@@ -62,8 +62,8 @@ int count(char *lineptr, char *delim);
 char **vectorize(char *lineptr, char *delim);
 stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
-int delete_dnode_at_head(stack_t **head);
-int delete_dnode_at_bottom(stack_t **bottom);
+stack_t *delete_dnode_at_head(stack_t **head);
+stack_t *delete_dnode_at_bottom(stack_t **bottom);
 size_t print_dlistint(const stack_t *h);
 void free_dlistint(stack_t *head);
 void (*select_inst(char *code))(stack_t **stack, unsigned int line_number);
@@ -71,5 +71,6 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void free_app(void);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif
