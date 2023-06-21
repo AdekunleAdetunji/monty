@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -34,6 +35,33 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct app_object - struct containing all necessary app variables
+ * @mode: mode of the program: stacks 1 (default), queue (2)
+ * @top: top node of stack
+ * @bottom: bottom node of stack
+ * @l_num: present instruction line
+ * @line: present working string from getline
+ * @args: parsed arguement:
+ *
+ * Description: The only variable will be created as global, and will be
+ * referenced in all source codes for easy memory monitoring, and freeing.
+*/
+typedef struct app_object
+{
+	int mode;
+	stack_t *top;
+	stack_t *bottom;
+	int l_num;
+	char *line;
+	char **args;
+} app_core;
 int count(char *lineptr, char *delim);
 char **vectorize(char *lineptr, char *delim);
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+int delete_dnode_at_head(stack_t **head, unsigned int index);
+int delete_dnode_at_bottom(stack_t **bottom, unsigned int index);
+size_t print_dlistint(const stack_t *h);
+void free_dlistint(stack_t *head);
 #endif

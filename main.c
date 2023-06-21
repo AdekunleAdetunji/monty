@@ -1,5 +1,5 @@
 #include "monty.h"
-
+app_core app = {1, NULL, NULL, 0, NULL, NULL};
 /**
  * main - Entry point to interpreter
  * @argv: The vector of command line argument strings
@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
 	int i;
-	char *lineptr = NULL, *delim = " \n\t", **vector = NULL;
+	char *delim = " \n\t";
 	size_t n;
 	ssize_t char_count;
 	FILE *file;
@@ -27,18 +27,21 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	while ((char_count = getline(&lineptr, &n, file)) != -1)
+	while ((char_count = getline(&(app.line), &n, file)) != -1)
 	{
-		vector = vectorize(lineptr, delim);
+		app.args = vectorize(app.line, delim);
 		puts("New run");
-		for (i = 0; vector && vector[i]; i++)
-			puts(vector[i]);
+		for (i = 0; app.args && app.args[i]; i++)
+			puts(app.args[i]);
 
-		if (vector)
-			free(vector);
+		if (app.args)
+		{
+			free(app.args);
+			app.args = NULL;
+		}
 	}
 
-	free(lineptr);
+	free(app.line);
 	fclose(file);
 	exit(EXIT_SUCCESS);
 }
