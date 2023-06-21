@@ -33,3 +33,28 @@ void free_dlistint(stack_t *head)
 		head = tmp;
 	}
 }
+
+/**
+ * rotate_dlint - rotates the entire double linked list
+ * @head: pointer to head node
+ * Return: pointer to the bottom of the node;
+*/
+stack_t *rotate_dlint(stack_t **head)
+{
+	stack_t *prev_head, *temp, *temp1, *temp2, *h;
+
+	prev_head = temp = *head;
+
+	while (temp)
+	{
+		h = temp;
+		temp1 = temp->next;
+
+		temp2 = temp->next;
+		temp->next = temp->prev;
+		temp->prev = temp2;
+		temp = temp1;
+	}
+	*head = h;
+	return (prev_head);
+}

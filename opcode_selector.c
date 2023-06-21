@@ -20,6 +20,10 @@ void (*select_inst(char *code))(stack_t **stack, unsigned int line_number)
 		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 

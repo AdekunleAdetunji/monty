@@ -75,7 +75,6 @@ stack_t *delete_dnode_at_head(stack_t **head)
 	if (next)
 		next->prev = NULL;
 	*head = next;
-	app.top = *head;
 	return (h);
 }
 /**
@@ -92,6 +91,6 @@ stack_t *delete_dnode_at_bottom(stack_t **bottom)
 	if (prev)
 		prev->next = NULL;
 	*bottom = prev;
-	app.bottom = *bottom;
-	return (b);
+	free(b);
+	return (*bottom);
 }
