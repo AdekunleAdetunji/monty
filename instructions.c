@@ -9,7 +9,7 @@ int len(char **argv)
 {
 	int i;
 
-	for (i = 0; argv[i]; i++);
+	for (i = 0; argv[i]; i++)
 
 	return (i);
 }
@@ -54,7 +54,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @stack: The address of the stack head node
  * @linenumber: The line number we are printing
  */
-void pall(stack_t **head, unsigned int linenumber)
+void pall(stack_t **stack, unsigned int linenumber)
 {
 	(void) linenumber;
 

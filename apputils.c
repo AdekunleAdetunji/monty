@@ -3,7 +3,7 @@
 /**
  * free_app - used to free the app structure
  */
-void free_app()
+void free_app(void)
 {
 	if (app.args)
 		free(app.args);
