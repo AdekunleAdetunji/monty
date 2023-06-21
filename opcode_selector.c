@@ -11,6 +11,7 @@ void (*select_inst(char *code))(stack_t **stack, unsigned int line_number)
 	instruction_t instruction[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 

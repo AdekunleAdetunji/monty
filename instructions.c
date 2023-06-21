@@ -62,3 +62,21 @@ void pall(stack_t **stack, unsigned int linenumber)
 
 	print_dlistint(*stack);
 }
+
+/**
+ * pint - print the elements at the top of the stack
+ * @stack: The address of the stack head node
+ * @linenumber: The line number we are executing
+ */
+void pint(stack_t **stack, unsigned int linenumber)
+{
+	(void) linenumber;
+	if (*stack)
+		printf("%d\n", (*stack)->n);
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", app.l_num);
+		free_app();
+		exit(EXIT_FAILURE);
+	}
+}
