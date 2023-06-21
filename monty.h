@@ -73,4 +73,10 @@ void free_app(void);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 
+
+/*error printing*/
+void monty_usage_err(void);
+void monty_file_err(char *file_name);
+void instructions_err(int l_num, char *inst);
+void pop_err(int l_num);
 #endif

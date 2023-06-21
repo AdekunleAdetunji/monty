@@ -92,10 +92,8 @@ void pop(stack_t **stack, unsigned int linenumber)
 
 	(void) linenumber;
 	if (!(*stack))
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", app.l_num);
-		exit(EXIT_FAILURE);
-	}
+		pop_err(app.l_num);
+
 	if (app.mode == 1)
 		popped = delete_dnode_at_head(stack);
 	else

@@ -14,17 +14,11 @@ int main(int argc, char **argv)
 	void (*f)(stack_t **stack, unsigned int line_number);
 
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		monty_usage_err();
 
 	app.file = fopen(argv[1], "r");
 	if (!app.file)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		monty_file_err(argv[1]);
 
 	while ((char_count = getline(&(app.line), &n, app.file)) != -1)
 	{
@@ -33,14 +27,7 @@ int main(int argc, char **argv)
 		{
 			f = select_inst(app.args[0]);
 			if (!f)
-			{
-				fprintf(stderr,
-					"L%d: unknown instruction %s\n",
-					app.l_num,
-					app.args[0]);
-				free_app();
-				exit(EXIT_FAILURE);
-			}
+				instructions_err(app.l_num, app.args[0]);
 			f(&(app.top), app.l_num);
 			free(app.args);
 			app.args = NULL;
