@@ -10,6 +10,8 @@ int len(char **argv)
 	int i;
 
 	for (i = 0; argv[i]; i++)
+	{
+	}
 
 	return (i);
 }
@@ -58,5 +60,5 @@ void pall(stack_t **stack, unsigned int linenumber)
 {
 	(void) linenumber;
 
-	print_dlistint(*head);
+	print_dlistint(*stack);
 }
