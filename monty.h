@@ -43,7 +43,7 @@ typedef struct instruction_s
  * @l_num: present instruction line
  * @line: present working string from getline
  * @args: parsed arguement:
- *
+ * @file: file stram;
  * Description: The only variable will be created as global, and will be
  * referenced in all source codes for easy memory monitoring, and freeing.
 */
@@ -55,13 +55,20 @@ typedef struct app_object
 	int l_num;
 	char *line;
 	char **args;
+	FILE *file;
 } app_core;
+extern app_core app;
 int count(char *lineptr, char *delim);
 char **vectorize(char *lineptr, char *delim);
 stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
-int delete_dnode_at_head(stack_t **head, unsigned int index);
-int delete_dnode_at_bottom(stack_t **bottom, unsigned int index);
+int delete_dnode_at_head(stack_t **head);
+int delete_dnode_at_bottom(stack_t **bottom);
 size_t print_dlistint(const stack_t *h);
 void free_dlistint(stack_t *head);
+void (*select_inst(char *code))(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void free_app();
+
 #endif

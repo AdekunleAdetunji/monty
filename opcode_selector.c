@@ -9,6 +9,8 @@ void (*select_inst(char *code))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	instruction_t instruction[] = {
+		{"push", push},
+		{"pall", pall},
 		{NULL, NULL}
 	};
 

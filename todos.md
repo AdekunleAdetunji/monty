@@ -15,3 +15,4 @@ having these in a single struct which will be the global variable, will make it 
 function created, array to be updated as instructions are created
 
 # Start writing the instructions
+# We need to free in the instruction functions

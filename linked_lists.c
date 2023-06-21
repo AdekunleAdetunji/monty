@@ -15,7 +15,10 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 	h = *head;
 	new = malloc(sizeof(stack_t));
 	if (!new)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	if (h)
 		h->prev = new;
@@ -39,7 +42,10 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	h = *head;
 	new = malloc(sizeof(stack_t));
 	if (!new)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	new->next = new->prev = NULL;
 	if (!h)
@@ -57,13 +63,11 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 /**
  * delete_dnode_at_head - deletes the node at head
  * @head: pointer to head node
- * @index: index to delete
  * Return: 1 if success, -1 if failed
 */
-int delete_dnode_at_head(stack_t **head, unsigned int index)
+int delete_dnode_at_head(stack_t **head)
 {
-	stack_t *prior, *h, *next;
-	unsigned int i;
+	stack_t *h, *next;
 
 	h = *head;
 	next = h->next;
@@ -76,13 +80,11 @@ int delete_dnode_at_head(stack_t **head, unsigned int index)
 /**
  * delete_dnode_at_bottom - deletes the node at bottom
  * @bottom: pointer to head node
- * @index: index to delete
  * Return: 1 if success, -1 if failed
 */
-int delete_dnode_at_bottom(stack_t **bottom, unsigned int index)
+int delete_dnode_at_bottom(stack_t **bottom)
 {
-	stack_t *prior, *b, *prev;
-	unsigned int i;
+	stack_t *b, *prev;
 
 	b = *bottom;
 	prev = b->prev;
