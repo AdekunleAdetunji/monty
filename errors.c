@@ -34,11 +34,13 @@ void instructions_err(int l_num, char *inst)
 	exit(EXIT_FAILURE);
 }
 /**
- * pop_err - error of pop
+ * print_err - error of pop
+ * @msg: error message
  * @l_num: line number
 */
-void pop_err(int l_num)
+void print_err(char *msg, int l_num)
 {
-	fprintf(stderr, "L%d: can't pop an empty stack\n", l_num);
+	fprintf(stderr, "L%d: ", l_num);
+	fputs(msg, stderr);
 	exit(EXIT_FAILURE);
 }

@@ -1,22 +1,6 @@
 #include "monty.h"
 
 /**
- * len - check for the length of an array
- * @argv: The vector under consideration
- * Return: Number of argument
- */
-int len(char **argv)
-{
-	int i;
-
-	for (i = 0; argv[i]; i++)
-	{
-	}
-
-	return (i);
-}
-
-/**
  * push - push unto the stack
  * @stack: The stack we are pushing untop
  * @line_number: The line number we are reading from
@@ -35,11 +19,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	opcode = (int) strtol(argv[1], &endptr, 10);
 	if (strlen(endptr))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_app();
-		exit(EXIT_FAILURE);
-	}
+		print_err("usage: push integer", line_number);
 
 	if (app.mode == 1)
 	{
@@ -70,15 +50,10 @@ void pall(stack_t **stack, unsigned int linenumber)
  */
 void pint(stack_t **stack, unsigned int linenumber)
 {
-	(void) linenumber;
 	if (*stack)
 		printf("%d\n", (*stack)->n);
 	else
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", app.l_num);
-		free_app();
-		exit(EXIT_FAILURE);
-	}
+		print_err("can't pint, stack empty", linenumber);
 }
 
 /**
@@ -90,9 +65,8 @@ void pop(stack_t **stack, unsigned int linenumber)
 {
 	stack_t *popped;
 
-	(void) linenumber;
 	if (!(*stack))
-		pop_err(app.l_num);
+		print_err("can't pop an empty stack", linenumber);
 
 	if (app.mode == 1)
 		popped = delete_dnode_at_head(stack);
@@ -100,3 +74,8 @@ void pop(stack_t **stack, unsigned int linenumber)
 		popped = delete_dnode_at_bottom(stack);
 	free(popped);
 }
+/**
+ * swap - swaps first 2 elements on the stack
+ * @stack: The stack we are pushing untop
+ * @line_number: The line number we are reading from
+ */

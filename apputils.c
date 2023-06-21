@@ -1,4 +1,19 @@
 #include "monty.h"
+/**
+ * len - check for the length of an array
+ * @argv: The vector under consideration
+ * Return: Number of argument
+ */
+int len(char **argv)
+{
+	int i;
+
+	for (i = 0; argv[i]; i++)
+	{
+	}
+
+	return (i);
+}
 
 /**
  * free_app - used to free the app structure
