@@ -41,6 +41,6 @@ void instructions_err(int l_num, char *inst)
 void print_err(char *msg, int l_num)
 {
 	fprintf(stderr, "L%d: ", l_num);
-	fputs(msg, stderr);
+	fprintf(stderr, "%s\n", msg);
 	exit(EXIT_FAILURE);
 }

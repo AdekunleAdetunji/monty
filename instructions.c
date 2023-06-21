@@ -11,11 +11,7 @@ void push(stack_t **stack, unsigned int line_number)
 	char **argv = app.args, *endptr;
 
 	if (len(argv) < 2)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_app();
-		exit(EXIT_FAILURE);
-	}
+		print_err("usage: push integer", line_number);
 
 	opcode = (int) strtol(argv[1], &endptr, 10);
 	if (strlen(endptr))
@@ -79,3 +75,13 @@ void pop(stack_t **stack, unsigned int linenumber)
  * @stack: The stack we are pushing untop
  * @line_number: The line number we are reading from
  */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int tmp;
+
+	if (!(*stack) || !((*stack)->next))
+		print_err("can't swap, stack too short", line_number);
+	tmp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = tmp;
+}
