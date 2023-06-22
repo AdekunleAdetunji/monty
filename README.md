@@ -201,3 +201,45 @@ The opcode rotr rotates the stack to the bottom.
 	Usage: rotr
 	The last element of the stack becomes the top element of the stack
 	rotr never fails
+
+# Task 15:
+Implement the stack and queue opcodes.
+
+The stack opcode
+
+The opcode stack sets the format of the data to a stack (LIFO). This is the default behavior of the program.
+
+	Usage: stack
+The queue opcode
+
+The opcode queue sets the format of the data to a queue (FIFO).
+
+	Usage: queue
+When switching mode:
+
+	The top of the stack becomes the front of the queue
+	The front of the queue becomes the top of the stack
+
+# Task 16:
+Write a Brainf*ck script that prints School, followed by a new line.
+
+	All your Brainf*ck files should be stored inside the bf sub directory
+	You can install the bf interpreter to test your code: sudo apt-get install bf
+	Read: Brainf*ck
+
+# Task 17:
+Add two digits given by the user.
+
+	Read the two digits from stdin, add them, and print the result
+	The total of the two digits with be one digit-long (<10)
+
+# Task 18:
+Multiply two digits given by the user.
+
+	Read the two digits from stdin, multiply them, and print the result
+	The result of the multiplication will be one digit-long (<10)
+
+# Task 19:
+Multiply two digits given by the user.
+
+	Read the two digits from stdin, multiply them, and print the result, followed by a new line
