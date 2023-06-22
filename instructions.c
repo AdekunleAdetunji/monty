@@ -64,10 +64,7 @@ void pop(stack_t **stack, unsigned int linenumber)
 	if (!(*stack))
 		print_err("can't pop an empty stack", linenumber);
 
-	if (app.mode == 1)
-		popped = delete_dnode_at_head(stack);
-	else
-		popped = delete_dnode_at_bottom(stack);
+	popped = delete_dnode_at_head(stack);
 	free(popped);
 }
 /**
