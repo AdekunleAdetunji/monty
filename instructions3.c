@@ -54,14 +54,18 @@ void pstr(stack_t **stack, unsigned int line_number)
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	int tmp;
+	stack_t *tmp;
 
 	(void) line_number;
 	if (*stack && (*stack)->next)
 	{
-		tmp = (*stack)->n;
-		delete_dnode_at_head(stack);
-		app.bottom = add_dnodeint_end(stack, tmp);
+		tmp = *stack;
+		*stack = tmp->next;
+		(*stack)->prev = NULL;
+		tmp->next = NULL;
+		tmp->prev = app.bottom;
+		app.bottom->next = tmp;
+		app.bottom = tmp;
 	}
 }
 /**
@@ -71,13 +75,17 @@ void rotl(stack_t **stack, unsigned int line_number)
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	int tmp;
+	stack_t *tmp;
 
 	(void) line_number;
 	if (*stack && (*stack)->next)
 	{
-		tmp = (app.bottom)->n;
-		app.bottom = delete_dnode_at_bottom(&(app.bottom));
-		add_dnodeint(stack, tmp);
+		tmp = app.bottom;
+		app.bottom = tmp->prev;
+		app.bottom->next = NULL;
+		tmp->prev = NULL;
+		tmp->next = *stack;
+		(*stack)->prev = tmp;
+		*stack = tmp;
 	}
 }

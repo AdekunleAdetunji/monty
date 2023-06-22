@@ -9,6 +9,5 @@ push 8
 push 9
 push 0
 pall
-rotl
 rotr
 pall

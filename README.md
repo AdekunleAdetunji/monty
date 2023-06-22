@@ -152,3 +152,52 @@ The opcode mod computes the rest of the division of the second top element of th
 
 # Task 10:
 Every good language comes with the capability of commenting. When the first non-space character of a line is #, treat this line as a comment (don’t do anything).
+
+# Task 11:
+Implement the pchar opcode.
+
+The pchar opcode
+
+The opcode pchar prints the char at the top of the stack, followed by a new line.
+
+	Usage: pchar
+	The integer stored at the top of the stack is treated as the ascii value of the character to be printed
+	If the value is not in the ascii table (man ascii) print the error message L<line_number>: can't pchar, value out of range, followed by a new line, and exit with the status EXIT_FAILURE
+	If the stack is empty, print the error message L<line_number>: can't pchar, stack empty, followed by a new line, and exit with the status EXIT_FAILURE
+
+# Task 12:
+Implement the pstr opcode.
+
+The pstr opcode
+
+The opcode pstr prints the string starting at the top of the stack, followed by a new line.
+
+	Usage: pstr
+	The integer stored in each element of the stack is treated as the ascii value of the character to be printed
+	The string stops when either:
+		the stack is over
+		the value of the element is 0
+		the value of the element is not in the ascii table
+	If the stack is empty, print only a new line
+
+# Task 13:
+Implement the rotl opcode.
+
+The rotl opcode
+
+The opcode rotl rotates the stack to the top.
+
+	Usage: rotl
+	The top element of the stack becomes the last one, and the second top element of the stack becomes the first one
+	rotl never fails
+
+# Task 14:
+Implement the rotr opcode.
+
+The rotr opcode
+
+The opcode rotr rotates the stack to the bottom.
+
+	Usage: rotr
+	The last element of the stack becomes the top element of the stack
+	rotr never fails
